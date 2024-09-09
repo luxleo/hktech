@@ -115,7 +115,7 @@ export default function NavBar() {
                     }}
                 >
                     <motion.div
-                        className={'absolute w-full h-full'}
+                        className={'absolute w-full h-full z-10'}
                         animate={isFocused ? "nav-visible" : "transparent"}
                         variants={{
                             "nav-visible": {
@@ -128,12 +128,10 @@ export default function NavBar() {
                             }
                         }}
                     >
-
                     </motion.div>
                     <MenuContainer/>
                 </motion.nav>
             </div>
-
         </NavBarContext.Provider>
     );
 };

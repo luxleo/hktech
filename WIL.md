@@ -7,3 +7,7 @@
     file it's defined in, or you might have mixed up
     default and named imports.```
     위에러는 useContext 정의시 export 해주지 않으면 일어났다.
+
+## css 애니메이션 처리시 layout 여러개 깔아 주기 
+    배경과 컨텐츠를 분리하여 적용하면 굉장히 편하고 좋다.
+[참조코드](./app/layout.tsx)
