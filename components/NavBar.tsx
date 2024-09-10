@@ -1,12 +1,12 @@
 'use client';
-// TODO: 1. hover시 패딩 늘려서 확장 되는 느낌
-// TODO: 2. hover시 drop down 으로 모든 메뉴 보이기
+//TODO : z-index 정리 필요하다. 24.09.10
 // TODO: 3. 모바일, 데스크탑 따로 나누기
-import {motion} from "framer-motion";
+import {motion,AnimatePresence} from "framer-motion";
 import {createContext, useCallback, useContext, useRef, useState} from "react";
 import {useMotionValueEvent, useScroll} from "framer-motion";
 import Link from "next/link";
 import clsx from "clsx";
+import Image from "next/image";
 
 type Menu = {
     id: number;
@@ -58,6 +58,8 @@ export default function NavBar() {
     const {scrollY} = useScroll();
     const lastYRef = useRef(0);
 
+    const logoImages = ['/hktech_logo.png', '/hktech_logo_black.png'];
+
     useMotionValueEvent(scrollY, "change", (y) => {
         const diff = y - lastYRef.current;
         if (diff > 10) {
@@ -84,22 +86,23 @@ export default function NavBar() {
                 onMouseEnter={() => changeIsFocused(true)}
                 onMouseLeave={() => changeIsFocused(false)}>
                 <motion.div
-                    //TODO: variants 상속되는지 알아보기
                     className={'fixed top-0 h-[95px] w-full'}
+                    initial={{background: 'white', height: '0px', opacity: 0}}
                     animate={isScrolled ? "bg-visible" : "bg-transparent"}
                     variants={{
                         "bg-visible": {
                             opacity: 0.8,
-                            background: "white",
+                            height: '95px'
                         },
                         "bg-transparent": {
-                            background: "none",
+
                         }
                     }}
                 >
+
                 </motion.div>
                 <motion.nav
-                    className={'w-full z-20 fixed top-0'}
+                    className={'w-full z-20 fixed top-0 left-0'}
                     initial={{background: isScrolled? 'white' : 'none', height: '95px'}}
                     animate={isFocused ? "nav-visible" : "transparent"}
                     variants={{
@@ -114,8 +117,39 @@ export default function NavBar() {
                     }
                     }}
                 >
+                    <AnimatePresence>
+                        <motion.div
+                            className={'fixed top-[18px] left-[3%] w-[200px] h-[66px] z-40 hover:cursor-pointer'}
+                            key={isScrolled || isFocused? 0 : 1}
+                            variants={{
+                                enter: {
+                                        y: -20,
+                                        opacity: 0
+                                    },
+                                center: {
+                                    zIndex: 50,
+                                    y: 0,
+                                    opacity: 1
+                                },
+                                exit:  {
+
+                                        y: 20,
+                                        opacity: 0
+                                    }
+                            }}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                                y: { type: "spring", stiffness: 300, damping: 30 },
+                                opacity: { duration: 0.2 }
+                            }}
+                        >
+                            <LogoImageSwitcher imageURL={logoImages[isScrolled || isFocused? 0 : 1]}/>
+                        </motion.div>
+                    </AnimatePresence>
                     <motion.div
-                        className={'absolute w-full h-full z-10'}
+                        className={'absolute w-full h-full z-20'}
                         animate={isFocused ? "nav-visible" : "transparent"}
                         variants={{
                             "nav-visible": {
@@ -144,7 +178,7 @@ function MenuContainer() {
         setCurrentMenu(value);
     },[])
     return (
-        <ul className={'flex justify-center z-50 relative'}>
+        <ul className={'flex justify-center z-40 relative'}>
             {navbarContext.isFocused && <div className={'absolute top-[95px] h-[1px] w-full bg-slate-300'}>
             </div>}
             {menus.map((el) => (
@@ -191,6 +225,23 @@ function MenuContainer() {
             ))}
         </ul>
     );
+}
+
+function LogoImageSwitcher({imageURL}:{ imageURL: string;}) {
+    return (
+        <Link href={'/'} className={'absolute top-0 left-0 z-40 w-[200px] h-[66px] '}>
+            <Image
+                src={imageURL}
+                fill
+                alt={'logo'}
+                sizes={'200px'}
+                style={{
+                    objectFit: "cover"
+                }}
+                priority={true}
+            />
+        </Link>
+    )
 }
 
 // function MenuList({menu}: { menu: RootMenu }) {

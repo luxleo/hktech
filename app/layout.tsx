@@ -4,6 +4,7 @@ import "./globals.css";
 import {notoSansKr} from "@/app/fonts/NotoSansKr";
 import NavBar from "@/components/NavBar";
 import {Suspense} from "react";
+import Footer from "@/components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +37,10 @@ export default async function RootLayout({
       <Suspense>
         <NavBar/>
       </Suspense>
+      <section className={'w-full min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-20vh)]'}>
         {children}
+      </section>
+      <Footer/>
       </body>
     </html>
   );
