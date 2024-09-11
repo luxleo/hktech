@@ -31,3 +31,8 @@
 </motion.div>
 ```
 [참조코드](./app/layout.tsx)
+
+## [CSS] sticky 적용 하려면 sticky 적용하는 요소에 높이 설정 해주어야한다.
+```html
+<div class="sticky h-[300px]"></div>
+``` 

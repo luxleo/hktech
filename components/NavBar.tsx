@@ -129,7 +129,7 @@ export default function NavBar() {
                                 center: {
                                     zIndex: 50,
                                     y: 0,
-                                    opacity: 1
+                                    opacity: 0.9
                                 },
                                 exit:  {
 
@@ -153,7 +153,7 @@ export default function NavBar() {
                         animate={isFocused ? "nav-visible" : "transparent"}
                         variants={{
                             "nav-visible": {
-                                opacity: 1,
+                                opacity: 0.9,
                                 background: 'white',
                             },
                             "transparent": {

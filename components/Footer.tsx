@@ -1,5 +1,9 @@
+'use client';
 import Image from "next/image";
 import {locationData} from "@/data/location";
+import Link from "next/link";
+import {useCallback, useState} from "react";
+import clsx from "clsx";
 
 
 export default function Footer() {
@@ -21,16 +25,34 @@ export default function Footer() {
                 </div>
             </div>
             <div className={'grow order-1 md:order-2 md:basis-0 flex md:flex-col items-center'}>
-                <div className={'md:w-[25vw] w-[50vw] flex items-center'}>
+                <div className={'md:w-[250px] xl:w-[300px] w-[50vw] flex items-center'}>
                     <Image className={'w-full'} src={"/hktech_logo.png"} alt={"company logo"} width={300}
                            height={300}
                            priority={true}/>
                 </div>
             </div>
-            <div className={'grow order-3 md:basis-0 flex flex-col items-end'}>
+            <div className={'grow order-3 md:basis-0 flex flex-col items-end gap-y-2'}>
                 {/*<div></div>*/}
+                <FamilyPageSelector/>
                 <div className={'text-xs md:text-md text-neutral-300'}>copyright ⓒ HK E&C. All right Reserved.</div>
             </div>
         </div>
     )
 };
+
+function FamilyPageSelector() {
+    const [isFocused, setIsFocused] = useState<boolean>(false);
+    return (
+        <div
+            className={'relative w-[250px] py-3 px-4 bg-black text-white flex justify-center items-center text-[1.1rem] font-semibold hover:cursor-pointer select-none'}
+            onClick={() => setIsFocused(prev => !prev)}
+        >
+            Family site
+            <div className={clsx('absolute top-0', {
+                'hidden': !isFocused,
+                'block': isFocused
+            })}>
+            </div>
+        </div>
+    );
+}
