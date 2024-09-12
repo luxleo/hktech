@@ -54,11 +54,11 @@ function FamilyPageSelector() {
                 'hidden': !isFocused,
                 'block w-full': isFocused
             })}>
-                <div className={'flex justify-center items-center w-full bg-white text-slate-500 hover:text-black text-[1.1rem] py-3 hover:cursor-pointer select-none'}>
-                    <Link href={'https://www.hkencdev.co.kr'} target={'_blank'}>
-                        주) 에이치케이이앤씨
-                    </Link>
-                </div>
+                <Link href={'https://www.hkencdev.co.kr'} target={'_blank'}>
+                    <div className={'flex justify-center items-center w-full bg-white text-slate-500 hover:text-black text-[1.1rem] py-3 hover:cursor-pointer select-none'}>
+                            주) 에이치케이이앤씨
+                    </div>
+                </Link>
             </div>
             <div className={clsx('absolute right-[10px] bottom-[calc(50%-5px)] rounded-full w-[10px] h-[6px]',{
                 'animate-pulse bg-emerald-300' : !isFocused,

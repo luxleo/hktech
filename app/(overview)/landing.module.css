@@ -1,0 +1,14 @@
+.colorChange{
+    animation: toRed 3s 1;
+    font-weight: bold;
+    color:red;
+}
+
+@keyframes toRed {
+    from {
+        color: inherit;
+    }
+    to {
+        color: red;
+    }
+}
