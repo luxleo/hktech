@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {locationData} from "@/data/location";
 import Link from "next/link";
-import {useCallback, useState} from "react";
+import {useState} from "react";
 import clsx from "clsx";
 
 
@@ -44,14 +44,27 @@ function FamilyPageSelector() {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     return (
         <div
-            className={'relative w-[250px] py-3 px-4 bg-black text-white flex justify-center items-center text-[1.1rem] font-semibold hover:cursor-pointer select-none'}
-            onClick={() => setIsFocused(prev => !prev)}
+            className={'relative w-[250px] py-3 px-4 bg-black text-white flex justify-center items-center text-[1.1rem] font-semibold hover:cursor-pointer select-none hover:shadow-inner hover:shadow-slate-300'}
+            onMouseEnter={() => setIsFocused(true)}
+            onMouseLeave={()=> setIsFocused(false)}
+            onClick={()=> setIsFocused(prev => !prev)}
         >
             Family site
-            <div className={clsx('absolute top-0', {
+            <div className={clsx('absolute bottom-full', {
                 'hidden': !isFocused,
-                'block': isFocused
+                'block w-full': isFocused
             })}>
+                <div className={'flex justify-center items-center w-full bg-white text-slate-500 hover:text-black text-[1.1rem] py-3 hover:cursor-pointer select-none'}>
+                    <Link href={'https://www.hkencdev.co.kr'} target={'_blank'}>
+                        주) 에이치케이이앤씨
+                    </Link>
+                </div>
+            </div>
+            <div className={clsx('absolute right-[10px] bottom-[calc(50%-5px)] rounded-full w-[10px] h-[6px]',{
+                'animate-pulse bg-emerald-300' : !isFocused,
+                'bg-emerald-400' : isFocused
+            })}>
+
             </div>
         </div>
     );

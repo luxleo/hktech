@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import {notoSansKr} from "@/app/fonts/NotoSansKr";
 import NavBar from "@/components/NavBar";
-import {Suspense} from "react";
 import Footer from "@/components/Footer";
 
 const geistSans = localFont({
@@ -34,9 +33,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansKr.className} antialiased`}
       >
-      <Suspense>
-        <NavBar/>
-      </Suspense>
+      <NavBar/>
       <section className={'w-full min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-20vh)]'}>
         {children}
       </section>
