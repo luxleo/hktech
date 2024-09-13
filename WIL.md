@@ -22,7 +22,6 @@ export default async function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${notoSansKr.className} antialiased`}
             >
-                
                 <Suspense> {/*line 1*/}
                     <NavBar/>
                 </Suspense>
