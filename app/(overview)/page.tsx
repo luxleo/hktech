@@ -3,11 +3,11 @@ import IndexBgImageRenderer from "@/app/(overview)/IndexBgImageRenderer";
 export default function Home() {
     const headerHeight = 95;
   return (
-      <section className={`w-full relative bg-slate-300`}>
+      <section className={`w-full relative bg-none`}>
           <IndexBgImageRenderer/>
           {/*1page*/}
           <div
-              className={`w-full pt-[${headerHeight}px] md:h-[100vh] md:px-[40px] grid grid-cols-1 md:grid-cols-2 gap-x-3`}>
+              className={`w-full pt-[${headerHeight}px] bg-slate-300 md:h-[100vh] md:px-[40px] grid grid-cols-1 md:grid-cols-2 gap-x-3`}>
               <div className={'w-full bg-emerald-500 pt-10 flex flex-col items-start gap-y-5'}>
                   <div className={'w-full text-[5rem] text-[#999] font-extrabold leading-none'}>
                       <span className={`${styles.colorChange}`}>H</span>uman <span
@@ -24,7 +24,7 @@ export default function Home() {
               </div>
           </div>
           {/*   2page  스크롤 포지션 추적해서 */}
-          <div className={'w-full h-[100vh] bg-none'}>
+          <div className={'w-full h-[70vh] bg-none'}>
 
           </div>
           <div className={'w-full h-[100vh] bg-none'}>
@@ -33,8 +33,8 @@ export default function Home() {
           <div className={'w-full h-[100vh] bg-none'}>
 
           </div>
-          <div className={'w-full h-[100vh] bg-none'}>
-
+          <div className={'w-full h-[100vh] bg-none -z-20'}>
+              good morining
           </div>
       </section>
   );
