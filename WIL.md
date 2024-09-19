@@ -74,3 +74,7 @@ export default async function RootLayout({
 ```html
 <div class="sticky h-[300px]"></div>
 ```
+
+# EC2 memory : buffer + cache
+free || top 으로 확인 가능한 메모리 사용량중 buff/cached 의 메모리 사용량이 높은것은 우려할 사항이 아니다
+메모리 수요가 급증할 경우 가장 먼저 사용되므로 clear 해줄 필요 없음. 

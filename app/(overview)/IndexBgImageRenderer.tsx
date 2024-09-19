@@ -10,12 +10,11 @@ import {useMotionValueEvent, useScroll} from "framer-motion";
  * @constructor
  */
 export default function IndexBgImageRenderer() {
-    const [imageIdx, setImageIdx] = useState<number>(0);``
-    const pageHeight = window.innerHeight;
-    const {scrollY} =useScroll();
-    useMotionValueEvent(scrollY, "change", (latest) => {
+    const [imageIdx, setImageIdx] = useState<number>(0);
+    const {scrollYProgress} =useScroll();
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
         console.log("Page scroll: ", latest)
-        if (latest < pageHeight * 3) {
+        if (latest < 0.5) {
             if(imageIdx !== 0) setImageIdx(0);
         }else {
             if(imageIdx !== 1) setImageIdx(1);
@@ -23,23 +22,36 @@ export default function IndexBgImageRenderer() {
     });
     return (
         <>
-            <div className={clsx('fixed top-0 w-full md:h-[100vh] bg-red-700 -z-10', {
+            <div className={clsx('fixed top-0 w-full h-[100vh] bg-red-700 -z-10', {
                 'block': imageIdx === 0,
                 'hidden': imageIdx === 1
             })}>
                 <Image src={'/landing_1.jpg'} alt={'landing page'}
-                       sizes={'80vw'}
+                       sizes={'(max-width: 768px) 1500px, (max-width: 1200px) 2000px, 80vw'}
+                       style={{
+                           objectFit: "cover",
+                       }}
                        fill={true}
+                       className={'brightness-90'}
                 >
 
                 </Image>
             </div>
-            <div className={clsx('fixed top-0 w-full md:h-[100vh] bg-emerald-500 -z-10', {
+            <div className={clsx('fixed top-0 w-full h-[100vh] -z-10', {
                 'block': imageIdx === 1,
                 'hidden': imageIdx === 0
             })}>
+                <Image src={'/landing_2.jpg'} alt={'landing page'}
+                       sizes={'(max-width: 768px) 2000px, (max-width: 1200px) 2000px, 80vw'}
+                       style={{
+                           objectFit: "cover",
+                       }}
+                       fill={true}
+                       className={'brightness-90'}
+                >
 
+                </Image>
             </div>
         </>
-    )
+    );
 };

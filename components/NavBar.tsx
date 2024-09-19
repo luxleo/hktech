@@ -58,7 +58,6 @@ export default function NavBar() {
     const {scrollY} = useScroll();
     const lastYRef = useRef(0);
 
-    const logoImages = ['/hktech_logo.png', '/hktech_logo_black.png'];
 
     useMotionValueEvent(scrollY, "change", (y) => {
         const diff = y - lastYRef.current;
@@ -76,6 +75,8 @@ export default function NavBar() {
         }
         ,[])
 
+    const logoImages = ['/hktech_logo.png', '/hktech_logo_black.png'];
+
     const NavBarContextValue: NavBarContext = {
         isFocused: isFocused,
         changeIsFocused: changeIsFocused,
@@ -84,9 +85,10 @@ export default function NavBar() {
         <NavBarContext.Provider value={NavBarContextValue}>
             <div
                 onMouseEnter={() => changeIsFocused(true)}
-                onMouseLeave={() => changeIsFocused(false)}>
+                onMouseLeave={() => changeIsFocused(false)}
+            >
                 <motion.div
-                    className={'fixed top-0 h-[95px] w-full'}
+                    className={'fixed top-0 h-[95px] w-full z-50'}
                     initial={{background: 'white', height: '0px', opacity: 0}}
                     animate={isScrolled ? "bg-visible" : "bg-transparent"}
                     variants={{
@@ -102,7 +104,7 @@ export default function NavBar() {
 
                 </motion.div>
                 <motion.nav
-                    className={'w-full z-20 fixed top-0 left-0'}
+                    className={'w-full fixed top-0 left-0 z-50'}
                     initial={{background: isScrolled? 'white' : 'none', height: '95px'}}
                     animate={isFocused ? "nav-visible" : "transparent"}
                     variants={{
@@ -120,45 +122,75 @@ export default function NavBar() {
                     <AnimatePresence>
                         <motion.div
                             className={'fixed top-[18px] left-[3%] w-[200px] h-[66px] z-40 hover:cursor-pointer'}
-                            key={isScrolled || isFocused? 0 : 1}
+                            key={'hktech_logo'}
                             variants={{
                                 enter: {
-                                        y: -20,
-                                        opacity: 0
-                                    },
+                                    y: -20,
+                                    opacity: 0
+                                },
                                 center: {
                                     zIndex: 50,
                                     y: 0,
                                     opacity: 0.9
                                 },
-                                exit:  {
-
-                                        y: 20,
-                                        opacity: 0
-                                    }
+                                exit: {
+                                    y: 20,
+                                    opacity: 0
+                                }
                             }}
                             initial="enter"
                             animate="center"
                             exit="exit"
                             transition={{
-                                y: { type: "spring", stiffness: 300, damping: 30 },
-                                opacity: { duration: 0.2 }
+                                y: {type: "spring", stiffness: 300, damping: 30},
+                                opacity: {duration: 0.2}
                             }}
                         >
-                            <LogoImageSwitcher imageURL={logoImages[isScrolled || isFocused? 0 : 1]}/>
+                            <div className={clsx('absolute top-0 left-0 w-[200px] h-[66px]', {
+                                'block': isScrolled || isFocused,
+                                'hidden': !(isScrolled || isFocused)
+                            })}>
+                                <Link href={'/'} className={'w-full h-full'}>
+                                    <Image
+                                        src={logoImages[0]}
+                                        fill
+                                        alt={'logo'}
+                                        sizes={'200px'}
+                                        style={{
+                                            objectFit: "cover"
+                                        }}
+                                        priority={true}
+                                    />
+                                </Link>
+                            </div>
+                            <div className={clsx('absolute top-0 left-0 w-[200px] h-[66px]', {
+                                'hidden': isScrolled || isFocused,
+                                'block': !(isScrolled || isFocused)
+                            })}>
+                                <Link href={'/'} className={'w-full h-full'}>
+                                    <Image
+                                        src={logoImages[1]}
+                                        fill
+                                        alt={'logo'}
+                                        sizes={'200px'}
+                                        style={{
+                                            objectFit: "cover"
+                                        }}
+                                        priority={true}
+                                    />
+                                </Link>
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                     <motion.div
-                        className={'absolute w-full h-full z-20'}
+                        className={'absolute w-full h-full z-20 bg-white'}
                         animate={isFocused ? "nav-visible" : "transparent"}
                         variants={{
                             "nav-visible": {
                                 opacity: 0.9,
-                                background: 'white',
                             },
                             "transparent": {
                                 opacity: 0,
-                                background: 'white',
                             }
                         }}
                     >
@@ -174,7 +206,7 @@ function MenuContainer() {
     const navbarContext = useContext(NavBarContext);
     const [currentMenu, setCurrentMenu] = useState<string>("");
 
-    const onMenuChangeHandler = useCallback((value: string)=>{
+    const onMenuChangeHandler = useCallback((value: string) => {
         setCurrentMenu(value);
     },[])
     return (
@@ -227,22 +259,7 @@ function MenuContainer() {
     );
 }
 
-function LogoImageSwitcher({imageURL}:{ imageURL: string;}) {
-    return (
-        <Link href={'/'} className={'absolute top-0 left-0 z-40 w-[200px] h-[66px] '}>
-            <Image
-                src={imageURL}
-                fill
-                alt={'logo'}
-                sizes={'200px'}
-                style={{
-                    objectFit: "cover"
-                }}
-                priority={true}
-            />
-        </Link>
-    )
-}
+
 
 // function MenuList({menu}: { menu: RootMenu }) {
 //     return (
