@@ -13,7 +13,6 @@ export default function IndexBgImageRenderer() {
     const [imageIdx, setImageIdx] = useState<number>(0);
     const {scrollYProgress} =useScroll();
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        console.log("Page scroll: ", latest)
         if (latest < 0.5) {
             if(imageIdx !== 0) setImageIdx(0);
         }else {

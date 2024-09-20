@@ -4,6 +4,7 @@ import "./globals.css";
 import {notoSansKr} from "@/app/fonts/NotoSansKr";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import {domAnimation, LazyMotion} from "framer-motion";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,11 +34,13 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansKr.className} antialiased`}
       >
-      <NavBar/>
-      <section className={'w-full min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-20vh)]'}>
-        {children}
-      </section>
-      <Footer/>
+      <LazyMotion features={domAnimation}>
+          <NavBar/>
+          <section className={'w-full min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-20vh)]'}>
+            {children}
+          </section>
+          <Footer/>
+      </LazyMotion>
       </body>
     </html>
   );

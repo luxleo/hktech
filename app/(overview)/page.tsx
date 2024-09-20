@@ -1,5 +1,7 @@
 import styles from './landing.module.css';
 import IndexBgImageRenderer from "@/app/(overview)/IndexBgImageRenderer";
+import {FaLink} from "react-icons/fa";
+
 export default function Home() {
     const headerHeight = 95;
     const indexBackgroundColor = 'bg-slate-300';
@@ -29,8 +31,14 @@ export default function Home() {
               <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500]'}>ABOUT US</h2>
               <div className={'flex flex-col items-center'}>
                   <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>사람과 기술로 혁신합니다</h1>
-                  <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>2012년 창립 이래 우수한 기술력과 진취적인 사고로 우리나라 건설기술의 선진화를 함께 이루어갑니다.</p>
+                  <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>2012년 창립 이래 우수한 기술력과 진취적인 사고로 <br/>우리나라 건설기술의 선진화를 함께 이루어갑니다.</p>
               </div>
+              <div className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
+                  <FaLink/>
+              </div>
+              {/*<Suspense fallback={'<div>loading...</div>'}>*/}
+              {/*    <InfoLinkButton/>*/}
+              {/*</Suspense>*/}
           </div>
           <div className={`w-full h-[100vh] ${indexBackgroundColor}`}>
 

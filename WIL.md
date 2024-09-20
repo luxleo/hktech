@@ -78,3 +78,17 @@ export default async function RootLayout({
 # EC2 memory : buffer + cache
 free || top 으로 확인 가능한 메모리 사용량중 buff/cached 의 메모리 사용량이 높은것은 우려할 사항이 아니다
 메모리 수요가 급증할 경우 가장 먼저 사용되므로 clear 해줄 필요 없음. 
+
+# Bundle size check
+빌드후 브라우져가 렌더링하기 위해 필요한 데이터를 서버로 부터 얻어 올때 
+Stat, parsed, gzipped 세 단계로 나누어 가져온다. 개발시 설치한 모든 라이브러리는 tree shaking 등의 과정을 거쳐 
+배포 형태로 내려오게 된다. 
+next js 에서는 `@next/bundle-analyzer` 를 이용하여 제공한다.
+
+[설치방법](https://nextjs.org/docs/app/building-your-application/optimizing/package-bundling)
+
+[구동방법(Window)](https://github.com/vercel/next.js/discussions/29107)
+
+stat: 전체 소스 코드의 크기 이다. 웹팩에 의하여 전혀 해석되지 않은 상태
+parsed: 웹팩이 해석한 실제 크기 번들 되기 전이다.
+gzipped: 웹팩이 번들하여 최종적으로 브라우져로 전달되는 크기 

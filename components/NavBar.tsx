@@ -1,7 +1,7 @@
 'use client';
 //TODO : z-index 정리 필요하다. 24.09.10
 // TODO: 3. 모바일, 데스크탑 따로 나누기
-import {motion,AnimatePresence} from "framer-motion";
+import {m} from "framer-motion";
 import {createContext, useCallback, useContext, useRef, useState} from "react";
 import {useMotionValueEvent, useScroll} from "framer-motion";
 import Link from "next/link";
@@ -87,7 +87,7 @@ export default function NavBar() {
                 onMouseEnter={() => changeIsFocused(true)}
                 onMouseLeave={() => changeIsFocused(false)}
             >
-                <motion.div
+                <m.div
                     className={'fixed top-0 h-[95px] w-full z-50'}
                     initial={{background: 'white', height: '0px', opacity: 0}}
                     animate={isScrolled ? "bg-visible" : "bg-transparent"}
@@ -102,8 +102,8 @@ export default function NavBar() {
                     }}
                 >
 
-                </motion.div>
-                <motion.nav
+                </m.div>
+                <m.nav
                     className={'w-full fixed top-0 left-0 z-50'}
                     initial={{background: isScrolled? 'white' : 'none', height: '95px'}}
                     animate={isFocused ? "nav-visible" : "transparent"}
@@ -119,32 +119,8 @@ export default function NavBar() {
                     }
                     }}
                 >
-                    <AnimatePresence>
-                        <motion.div
-                            className={'fixed top-[18px] left-[3%] w-[200px] h-[66px] z-40 hover:cursor-pointer'}
-                            key={'hktech_logo'}
-                            variants={{
-                                enter: {
-                                    y: -20,
-                                    opacity: 0
-                                },
-                                center: {
-                                    zIndex: 50,
-                                    y: 0,
-                                    opacity: 0.9
-                                },
-                                exit: {
-                                    y: 20,
-                                    opacity: 0
-                                }
-                            }}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{
-                                y: {type: "spring", stiffness: 300, damping: 30},
-                                opacity: {duration: 0.2}
-                            }}
+                        <div
+                            className={'fixed top-[18px] left-[3%] w-[200px] h-[66px] z-50 hover:cursor-pointer'}
                         >
                             <div className={clsx('absolute top-0 left-0 w-[200px] h-[66px]', {
                                 'block': isScrolled || isFocused,
@@ -180,9 +156,8 @@ export default function NavBar() {
                                     />
                                 </Link>
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
-                    <motion.div
+                        </div>
+                    <m.div
                         className={'absolute w-full h-full z-20 bg-white'}
                         animate={isFocused ? "nav-visible" : "transparent"}
                         variants={{
@@ -194,9 +169,9 @@ export default function NavBar() {
                             }
                         }}
                     >
-                    </motion.div>
+                    </m.div>
                     <MenuContainer/>
-                </motion.nav>
+                </m.nav>
             </div>
         </NavBarContext.Provider>
     );
@@ -220,7 +195,7 @@ function MenuContainer() {
                            onMouseLeave={()=> onMenuChangeHandler("")}
                 >
                     <Link href={el.link}>
-                        <motion.div
+                        <m.div
                             animate={navbarContext.isFocused ? 'focused' : "unfocused"}
                             variants={{
                                 "focused": {
@@ -235,7 +210,7 @@ function MenuContainer() {
                             })}
                         >
                             {el.name}
-                        </motion.div>
+                        </m.div>
                     </Link>
                     <ul className={clsx('absolute top-[95px] left-0 w-full pt-[1rem]', {
                         'hidden': !navbarContext.isFocused,
