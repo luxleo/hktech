@@ -5,9 +5,9 @@ export default function InfoCardRoot({title,children}:{
 }) {
     return (
         <div className={`${styles.card_container}`}>
-            <div className={`${styles.card} w-[240px] group`}>
+            <div className={`${styles.card} w-full h-[calc(100px+19vw)] group md:px-[2rem] md:py-[3rem]`}>
                 {/*<h4>Products</h4>*/}
-                <div className={'text-white group-hover:text-emerald-400 text-[1.4rem] relative z-[2]'}>
+                <div className={'text-white group-hover:text-emerald-400 text-[32px] relative z-[2]'}>
                     {title}
                 </div>
                 {children}

@@ -11,19 +11,23 @@ type FocusPageData = {
 }
 
 const departmentLinks : FocusPageData[] = [
-    {fieldName: '토목사업', description: '사회를 연결하며 사회의 기반이 되는 토목사업분야를 수행하고 있습니다', departments: [
+    {fieldName: '토목사업', description: '안전한 연결, 믿음직한 기반, 아름다움과 가치를 제공하기 위해 전통적 방식에 혁신을 더하여 확장시켜 나아가고 있습니다.', departments: [
             {departmentName: '구조부', link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=구조부'},
-            {departmentName: '지반부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=지반부'}
+            {departmentName: '지반부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=지반부'},
+            {departmentName: '설계부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=설계부'},
+            {departmentName: '수자원부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=수자원부'},
+            {departmentName: '조경부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=조경부'},
+            {departmentName: '상하수도부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=상하수도부'},
         ]},
-    {fieldName: '국토사업', description: '국토공간의 효율적인 이용과 패러다임의 변화에 적합한 도시·교통계획을 제시합니다', departments: [
+    {fieldName: '국토사업', description: '국토공간의 효율적인 이용과 패러다임의 변화에 적합한 도시·교통계획을 제시하여 균형있는 국토개발, 녹색도시 구현을 선도합니다.', departments: [
             {departmentName: '도시계획부', link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=구조부'},
             {departmentName: '교통계획부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=지반부'}
         ]},
-    {fieldName: '국토사업', description: '국토공간의 효율적인 이용과 패러다임의 변화에 적합한 도시·교통계획을 제시합니다', departments: [
+    {fieldName: '진단사업', description: '건설현장의 안전점검과 구조해석을 통한 시설물의 물리적 기능적 결함 및 위험요인을 발견 하는 안정성 평가를 수행합니다.', departments: [
             {departmentName: '도시계획부', link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=구조부'},
             {departmentName: '교통계획부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=지반부'}
         ]},
-    {fieldName: '국토사업', description: '국토공간의 효율적인 이용과 패러다임의 변화에 적합한 도시·교통계획을 제시합니다', departments: [
+    {fieldName: '건설관리', description: '토목분야 전반에 걸쳐 품질,환경,공정,리스크 관리에 있어 최상의 시설물을 만들기 위하여 건설사업관리의 체계적인 서비스를 제공합니다.', departments: [
             {departmentName: '도시계획부', link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=구조부'},
             {departmentName: '교통계획부',link: '/businesses/domains?currentDomain=토목사업분야&currentDepartment=지반부'}
         ]},
@@ -67,16 +71,20 @@ export default function Home() {
               </div>
           </div>
           {/* 3 section */}
-          <div className={`w-full ${indexBackgroundColor} flex flex-col justify-center items-center pt-10`}>
-              <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500]'}>FOCUS</h2>
-              <div className={'flex flex-col items-center'}>
-                  <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>토목분야의 문제해결과 기술향상에 집중합니다</h1>
-                  <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>최상의 기술과 다양한 경험으로 건설엔지니어링의 모든 영역의 문제를 해결합니다</p>
-              </div>
-              <div className={'md:pt-20 flex gap-x-3'}>
-                  {departmentLinks.map(el => (
-                      <BusinessInfoCard key={el.departments} title={el.fieldName} description={el.description} businessLinks={el.departments}/>
-                  ))}
+          <div className={`w-full ${indexBackgroundColor} pt-[90px] md:pt-[140px]`}>
+              <div className={'w-[calc(100%-5.6vw)] max-w-[1400px] flex mx-auto flex-col justify-center items-center'}>
+                  <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500] pt-[4.4vw] border-t-[1px] border-[#222] w-full text-center'}>FOCUS</h2>
+                  <div className={'flex flex-col items-center'}>
+                      <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>토목분야의 문제해결과 기술향상에 집중합니다</h1>
+                      <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>최상의 기술과 다양한 경험으로 건설엔지니어링의 모든 영역의 문제를
+                          해결합니다</p>
+                  </div>
+                  <div className={'md:mt-[60px] w-full grid md:grid-cols-4 gap-x-[1.4vw]'}>
+                      {departmentLinks.map(el => (
+                          <BusinessInfoCard key={el.departments} title={el.fieldName} description={el.description}
+                                            businessLinks={el.departments}/>
+                      ))}
+                  </div>
               </div>
           </div>
           <div className={`w-full h-[100vh] ${indexBackgroundColor}`}>
