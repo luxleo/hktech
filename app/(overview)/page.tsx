@@ -81,7 +81,7 @@ export default function Home() {
                   </div>
                   <div className={'md:mt-[60px] w-full grid md:grid-cols-4 gap-x-[1.4vw]'}>
                       {departmentLinks.map(el => (
-                          <BusinessInfoCard key={el.departments} title={el.fieldName} description={el.description}
+                          <BusinessInfoCard key={`field_name_${el.fieldName}`} title={el.fieldName} description={el.description}
                                             businessLinks={el.departments}/>
                       ))}
                   </div>
