@@ -46,7 +46,7 @@ export default function IndexBgImageRenderer() {
                            objectFit: "cover",
                        }}
                        fill={true}
-                       className={'brightness-90'}
+                       className={'brightness-75'}
                 >
 
                 </Image>
