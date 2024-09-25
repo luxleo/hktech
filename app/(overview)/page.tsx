@@ -36,7 +36,7 @@ const departmentLinks : FocusPageData[] = [
 export default function Home() {
     const indexBackgroundColor = 'bg-black';
   return (
-      <section className={`w-full relative bg-none`}>
+      <section className={`w-full relative bg-none text-white`}>
           <IndexBgImageRenderer/>
           {/*1page*/}
           <div
