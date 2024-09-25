@@ -32,9 +32,8 @@ export default function IndexBgImageRenderer() {
                        }}
                        fill={true}
                        className={'brightness-90'}
-                >
-
-                </Image>
+                       priority={true}
+                />
             </div>
             <div className={clsx('fixed top-0 w-full h-[100vh] -z-10', {
                 'block': imageIdx === 1,
@@ -47,9 +46,8 @@ export default function IndexBgImageRenderer() {
                        }}
                        fill={true}
                        className={'brightness-75'}
-                >
-
-                </Image>
+                       priority={true}
+                />
             </div>
         </>
     );
