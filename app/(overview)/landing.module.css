@@ -4,11 +4,26 @@
     color:red;
 }
 
+.animate_webgl_preload {
+    animation: canvasLoading 1s ease-in-out;
+}
+
 @keyframes toRed {
     from {
         color: inherit;
     }
     to {
         color: red;
+    }
+}
+
+@keyframes canvasLoading {
+    0% {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

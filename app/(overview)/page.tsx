@@ -3,6 +3,8 @@ import IndexBgImageRenderer from "@/app/(overview)/IndexBgImageRenderer";
 import {FaLink} from "react-icons/fa";
 import Link from "next/link";
 import BusinessInfoCard, {BusinessLink} from "@/app/(overview)/information_card/BusinessInfoCard";
+import Spline from "@splinetool/react-spline";
+import TypingEffect from "@/app/(overview)/TypingEffect";
 
 type FocusPageData = {
     fieldName: string;
@@ -32,31 +34,55 @@ const departmentLinks : FocusPageData[] = [
 ]
 
 export default function Home() {
-    const headerHeight = 95;
     const indexBackgroundColor = 'bg-black';
   return (
       <section className={`w-full relative bg-none`}>
           <IndexBgImageRenderer/>
           {/*1page*/}
           <div
-              className={`w-full pt-[${headerHeight}px] ${indexBackgroundColor} md:h-[100vh] md:px-[40px] grid grid-cols-1 md:grid-cols-2 gap-x-3`}>
-              <div className={'w-full bg-emerald-500 pt-10 flex flex-col items-start gap-y-5'}>
-                  <div className={'w-full text-[5rem] text-[#999] font-extrabold leading-none'}>
-                      <span className={`${styles.colorChange}`}>H</span>uman <span
-                      className={`${styles.colorChange}`}>K</span>orea<br/>
-                      Technology
+              className={`w-full ${indexBackgroundColor} h-[100vh] md:px-[40px] flex justify-center items-center`}>
+              <div className={'w-full md:w-[60vw] grid grid-cols-1 md:grid-cols-2 gap-x-3'}>
+                  <div
+                      className={'w-full h-full lg:h-[600px]  flex flex-col justify-center items-start md:order-first order-last'}>
+                      <div className={'w-full lg:text-[4.5rem] font-extrabold leading-none'}>
+                          <span className={`${styles.colorChange}`}>H</span>uman <span
+                          className={`${styles.colorChange}`}>K</span>orea Technology
+                      </div>
+                      <div className={'pt-[2vw]'}></div>
+                      <TypingEffect texts={['사람과 기술로 사회발전에 기여합니다.', '토목분야의 문제해결과 기술향상에 집중합니다']}/>
+                      <div className={'pt-[2vw]'}></div>
+                      <div className={'flex gap-x-3'}>
+                          <Link href={'/'}>
+                              <div
+                                  className={'text-base h-12 pl-5 pr-2 gap-0 font-semibold bg-white text-black hover:bg-white/90 focus-visible:ring-4 focus-visible:ring-white/30 focus-visible:outline-none focus-visible:bg-white/90 disabled:hover:bg-white inline-flex items-center border justify-center select-none rounded-full disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200'}>
+                                  회사소개
+                                  <span className="text-[#70757E]"><svg fill="none" height="24" viewBox="0 0 24 24"
+                                                                        width="24" xmlns="http://www.w3.org/2000/svg"><path
+                                      d="M10.75 8.75L14.25 12L10.75 15.25" stroke="currentColor" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="1.5"></path></svg></span>
+                              </div>
+                          </Link>
+                          <Link href={'/s'}>
+                              <div
+                                  className={'text-base h-12 pl-5 pr-2 gap-0 font-semibold hover:bg-gray-800/90 hover:text-slate-12 inline-flex items-center justify-center select-none rounded-full disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200'}>
+                                  오시는길
+                                  <span className="text-[#70757E]"><svg fill="none" height="24" viewBox="0 0 24 24"
+                                                                        width="24" xmlns="http://www.w3.org/2000/svg"><path
+                                      d="M10.75 8.75L14.25 12L10.75 15.25" stroke="currentColor" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="1.5"></path></svg></span>
+                              </div>
+                          </Link>
+                      </div>
                   </div>
                   <div
-                      className={'w-full flex justify-center items-center grow basis-0 bg-black text-white text-[4rem]'}>
-                      은하3d 모델
+                      className={`${styles.animate_webgl_preload} hidden lg:block w-full grayscale`}>
+                      <Spline scene="/cube.splinecode"/>
                   </div>
               </div>
-              <div className={'w-full h-15 bg-emerald-600'}>
-                  다이아몬드 그리드로 메뉴(hover시 플립 카드로) 바로가기
-              </div>
           </div>
-          {/* 2 section */}
-          <div className={'w-full h-[120vw] md:h-[40vw] bg-none flex justify-center items-center flex-col'}>
+          {/* 2 section */
+}
+    <div className={'w-full h-[120vw] md:h-[40vw] bg-none flex justify-center items-center flex-col'}>
               <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500]'}>ABOUT US</h2>
               <div className={'flex flex-col items-center'}>
                   <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>사람과 기술로 사회발전에 기여합니다.</h1>

@@ -1,0 +1,13 @@
+.anim_typewriter{
+    animation: blinkTextCursor 700ms steps(44) infinite normal;
+}
+@keyframes blinkTextCursor{
+    0% {
+        opacity: 20%;
+    }
+    50%{
+        opacity: 100;
+    }
+    to{
+        opacity: 20%;}
+}
