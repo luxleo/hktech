@@ -3,10 +3,9 @@
 import {Suspense} from "react";
 import clsx from "clsx";
 import Image from "next/image";
-import {PROJECT_IMG_PREFIX} from "@/app/subpage/businesses/projects/data";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {CONTENT_URL} from "@/app/subpage/prefixed";
-import {departmentDomain, departmentInfo, departmentProject, domain} from "@/app/subpage/businesses/domains/api";
+import {departmentDomain, departmentInfo, domain} from "@/app/subpage/businesses/domains/api";
 import SectionTitle from "@/app/subpage/ui/section_title";
 export default function DomainMenuWrapper({domains,currentDomain, currentDepartment, departmentInfo}:{
     domains: domain[];
@@ -167,52 +166,52 @@ function DepartmentBusinessDomain({departmentDomain}:{
     )
 }
 
-function DepartmentProjectsContainer({projects, currentDepartment}:{
-    projects: departmentProject[];
-    currentDepartment: string;
-}){
-    return(
-        <div className={'w-full grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-4 md:gap-x-8 gap-y-14 sm:gap-y-20'}>
-            {projects.map((project, idx)=>{
-                //project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
-                return (
-                    <div key={`${idx}-${project.name}`} className={'w-full px-[10%] sm:px-0'}>
-                        <DepartmentProejectCard project={project} currentDepartment={currentDepartment}/>
-                    </div>
-                );
-            })}
-        </div>
-    )
-}
+// function DepartmentProjectsContainer({projects, currentDepartment}:{
+//     projects: departmentProject[];
+//     currentDepartment: string;
+// }){
+//     return(
+//         <div className={'w-full grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-4 md:gap-x-8 gap-y-14 sm:gap-y-20'}>
+//             {projects.map((project, idx)=>{
+//                 //project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
+//                 return (
+//                     <div key={`${idx}-${project.name}`} className={'w-full px-[10%] sm:px-0'}>
+//                         <DepartmentProejectCard project={project} currentDepartment={currentDepartment}/>
+//                     </div>
+//                 );
+//             })}
+//         </div>
+//     )
+// }
 
-function DepartmentProejectCard({project, currentDepartment}:{
-    project: departmentProject;
-    currentDepartment: string;
-}){
-    //TODO: process.env로 로컬과 원격 환경 image src 관리해주기
-    return (
-        <div className={'w-full flex flex-col pb-2 border-neutral-300 border-b-2 sm:border-0 sm:pb-0'}>
-            <div className={'relative aspect-square'}>
-                <Image
-                    src={`${PROJECT_IMG_PREFIX}/${project.imageURL[currentDepartment]}`} alt={"project image"}
-                    fill
-                    sizes={'100vw'}
-                    style={{objectFit: 'cover'}}
-                    className={'absolute top-0 left-0'}
-                />
-            </div>
-            <div className={'flex flex-col'}>
-                <div className={'text-sm md:text-lg text-black font-semibold md:h-[60%]'}>
-                    {project.name}
-                </div>
-                <div className={'text-xs md:text-sm text-neutral-600 pb-1'}>
-                    {project.projectOwner}
-                </div>
-                <div className={'text-xs md:text-sm text-neutral-500'}>
-                    {project.startDate?.split('.')[0]}
-                </div>
-            </div>
-
-        </div>
-    )
-}
+// function DepartmentProejectCard({project, currentDepartment}:{
+//     project: departmentProject;
+//     currentDepartment: string;
+// }){
+//     //TODO: process.env로 로컬과 원격 환경 image src 관리해주기
+//     return (
+//         <div className={'w-full flex flex-col pb-2 border-neutral-300 border-b-2 sm:border-0 sm:pb-0'}>
+//             <div className={'relative aspect-square'}>
+//                 <Image
+//                     src={`${PROJECT_IMG_PREFIX}/${project.imageURL[currentDepartment]}`} alt={"project image"}
+//                     fill
+//                     sizes={'100vw'}
+//                     style={{objectFit: 'cover'}}
+//                     className={'absolute top-0 left-0'}
+//                 />
+//             </div>
+//             <div className={'flex flex-col'}>
+//                 <div className={'text-sm md:text-lg text-black font-semibold md:h-[60%]'}>
+//                     {project.name}
+//                 </div>
+//                 <div className={'text-xs md:text-sm text-neutral-600 pb-1'}>
+//                     {project.projectOwner}
+//                 </div>
+//                 <div className={'text-xs md:text-sm text-neutral-500'}>
+//                     {project.startDate?.split('.')[0]}
+//                 </div>
+//             </div>
+//
+//         </div>
+//     )
+// }

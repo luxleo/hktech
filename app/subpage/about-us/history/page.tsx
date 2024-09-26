@@ -1,6 +1,6 @@
 import SectionTitle from "@/app/subpage/ui/section_title";
 import {Suspense} from "react";
-import {history_data, historyData} from "@/app/subpage/about-us/history/history_data";
+import {history_data} from "@/app/subpage/about-us/history/history_data";
 import HistoryBigCard from "@/app/subpage/about-us/history/history-card";
 import HistorySmallCard from "@/app/subpage/about-us/history/history-small-card";
 import {Metadata} from "next";

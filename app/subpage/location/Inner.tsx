@@ -7,7 +7,7 @@ import {locationData, locationInfo} from "@/data/location";
 export default function Inner() {
     const mapRef = useRef<HTMLDivElement | null>(null);
     const [mapLoaded, setMapLoaded] = useState<boolean>(false);
-    const [currentLocation, setCurrentLocation] = useState<locationInfo>(locationData[0]);
+    const currentLocation = locationData[0];
 
 
     //LEARN: 최상단 레이아웃에 구현했었는데 자꾸 로드 하지 못하는 문제가 발생 => 그래서 로드시에 해결하고 플래그 신호를 주어 변경하도록 하였음.
@@ -30,21 +30,21 @@ export default function Inner() {
             };
 
             const map = new window.kakao.maps.Map(mapRef.current, options); //지도 생성 및 객체 리턴
-            var markerPosition  = new window.kakao.maps.LatLng(pos.x, pos.y);
+            const markerPosition  = new window.kakao.maps.LatLng(pos.x, pos.y);
 
 // 마커를 생성합니다
-            var marker = new window.kakao.maps.Marker({
+            const marker = new window.kakao.maps.Marker({
                 position: markerPosition
             });
 
 // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
 
-            var iwContent = `<div class="whitespace-nowrap" style="padding:15px;"> <a href="https://map.kakao.com/link/map/주) ${currentLocation.locationName},${pos.x},${pos.y}" class="ml-2" style="cursor:pointer;" target="_blank">주) ${currentLocation.locationName}</a></div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            const iwContent = `<div class="whitespace-nowrap" style="padding:15px;"> <a href="https://map.kakao.com/link/map/주) ${currentLocation.locationName},${pos.x},${pos.y}" class="ml-2" style="cursor:pointer;" target="_blank">주) ${currentLocation.locationName}</a></div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 iwPosition = new window.kakao.maps.LatLng(pos.x, pos.y); //인포윈도우 표시 위치입니다
 
 // 인포윈도우를 생성합니다
-            var infowindow = new window.kakao.maps.InfoWindow({
+            const infowindow = new window.kakao.maps.InfoWindow({
                 position : iwPosition,
                 content : iwContent
             });

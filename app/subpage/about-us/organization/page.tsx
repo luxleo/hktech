@@ -17,7 +17,7 @@ export default function Page() {
                 <SectionTitle title={'조직구조'}/>
             </Suspense>
             <div className={'mt-20 w-full flex flex-col items-start'}>
-                <Image src={CONTENT_URL.ORGANIZATION} alt={'ORGANIZATION'}
+                <Image src={CONTENT_URL.ORGANIZATION as string} alt={'ORGANIZATION'}
                        width={1360}
                        height={617}
                        className={'w-full mb-20'}

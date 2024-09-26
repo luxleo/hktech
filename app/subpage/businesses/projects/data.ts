@@ -1,4 +1,4 @@
-import {departmentProject} from "@/app/lib/hk/domainsData";
+import {departmentProject} from "@/app/subpage/businesses/domains/api";
 
 export const PROJECT_IMG_PREFIX = '/hkdemo/domain_images/project_images';
 

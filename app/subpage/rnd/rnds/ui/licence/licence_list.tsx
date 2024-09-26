@@ -1,33 +1,29 @@
 'use client';
 
-import {Dispatch, SetStateAction, useState} from "react";
-import clsx from "clsx";
-import {LicenceInfo, licences} from "@/app/subpage/rnd/rnds/ui/licence/licence_dummy_data";
+import { licences} from "@/app/subpage/rnd/rnds/ui/licence/licence_dummy_data";
 
-const pageSize = 6;
-function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
-    if(flag) return licences.sort((a, b) => b.enrollDate.localeCompare(a.enrollDate));;
-    const result = licences.slice((pageNum - 1) * pageSize, pageNum * pageSize)
-        .sort((a, b) => a.enrollDate.localeCompare(b.enrollDate));
-    return result;
-}
+// const pageSize = 6;
+// function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
+//     if(flag) return licences.sort((a, b) => b.enrollDate.localeCompare(a.enrollDate));;
+//     const result = licences.slice((pageNum - 1) * pageSize, pageNum * pageSize)
+//         .sort((a, b) => a.enrollDate.localeCompare(b.enrollDate));
+//     return result;
+// }
 export default function LicenceList() {
-    const flag = true;
-    const [pagedLicences, setPagedLicences] = useState(getPagedLicences(1,flag));
+    // const flag = true;
+    // const [pagedLicences, setPagedLicences] = useState(getPagedLicences(1,flag));
 
     return (
         <div className={'w-full'}>
             <div className={'w-full flex flex-col items-center'}>
-                <LicenceListContainer pagedLicences={pagedLicences}/>
-                <PaginationContainer setPagedLicences={setPagedLicences} flag={flag}/>
+                <LicenceListContainer/>
+                {/*<PaginationContainer setPagedLicences={setPagedLicences} flag={flag}/>*/}
             </div>
         </div>
     );
 };
 
-function LicenceListContainer({pagedLicences}:{
-    pagedLicences: LicenceInfo[]
-}) {
+function LicenceListContainer() {
     return (
         <div className={'w-[90%] flex justify-center items-center'}>
             <table className={'hidden md:!table w-full'}>
@@ -79,34 +75,34 @@ function LicenceListContainer({pagedLicences}:{
     );
 }
 
-function PaginationContainer({setPagedLicences, flag}: {
-    setPagedLicences: Dispatch<SetStateAction<LicenceInfo[]>>;
-    flag: boolean;
-}) {
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const totalSize = licences.length;
-    const remainder = totalSize % pageSize;
-    const totalPage = remainder == 0? totalSize / pageSize : (totalSize / pageSize)+1;
-    const pageArray = Array.from({length: totalPage}, (v, i) => i + 1);
-
-    return (
-        <div className={clsx('flex gap-1 mt-6 md:hover:cursor-pointer',{
-            'hidden' : flag
-        })}>
-            {pageArray.map(pageNum => (
-                <div key={`${pageNum}-pg`} className={clsx('w-7 h-7  text-sm flex items-center justify-center font-light',
-                    {
-                        'bg-neutral-400 text-white': currentPage == pageNum,
-                        'bg-neutral-200 text-neutral-600': currentPage != pageNum
-                    })}
-                     onClick={()=>{
-                         setPagedLicences(getPagedLicences(pageNum,flag));
-                         setCurrentPage(pageNum);
-                     }}
-                >
-                    {pageNum}
-                </div>
-            ))}
-        </div>
-    );
-}
+// function PaginationContainer({setPagedLicences, flag}: {
+//     setPagedLicences: Dispatch<SetStateAction<LicenceInfo[]>>;
+//     flag: boolean;
+// }) {
+//     const [currentPage, setCurrentPage] = useState<number>(1);
+//     const totalSize = licences.length;
+//     const remainder = totalSize % pageSize;
+//     const totalPage = remainder == 0? totalSize / pageSize : (totalSize / pageSize)+1;
+//     const pageArray = Array.from({length: totalPage}, (v, i) => i + 1);
+//
+//     return (
+//         <div className={clsx('flex gap-1 mt-6 md:hover:cursor-pointer',{
+//             'hidden' : flag
+//         })}>
+//             {pageArray.map(pageNum => (
+//                 <div key={`${pageNum}-pg`} className={clsx('w-7 h-7  text-sm flex items-center justify-center font-light',
+//                     {
+//                         'bg-neutral-400 text-white': currentPage == pageNum,
+//                         'bg-neutral-200 text-neutral-600': currentPage != pageNum
+//                     })}
+//                      onClick={()=>{
+//                          setPagedLicences(getPagedLicences(pageNum,flag));
+//                          setCurrentPage(pageNum);
+//                      }}
+//                 >
+//                     {pageNum}
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// }

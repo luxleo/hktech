@@ -17,6 +17,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+declare global {
+    interface Window {
+        kakao: never;
+    }
+}
 export const metadata: Metadata = {
   title: {
     template: "%s | HK 기술",
