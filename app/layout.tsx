@@ -19,7 +19,7 @@ const geistMono = localFont({
 
 declare global {
     interface Window {
-        kakao: never;
+        kakao: any;
     }
 }
 export const metadata: Metadata = {
