@@ -11,12 +11,6 @@ export type panToFunction = (x:string, y:string) => void;
 
 export const locationData : locationInfo[] = [
     {
-        locationName: 'HK이앤씨',
-        streetAddress: '부산광역시 금정구 범어천로 31 4층',
-        buildingInfo: '(남산동, 대영빌딩)',
-        pos: {x:'35.26904916928503',y:'129.08966942948777'}
-    },
-    {
         locationName: 'HK기술',
         streetAddress: '경상남도 김해시 삼문로 9, 4층 405-1호',
         buildingInfo: '(대청동, 트윈스빌딩)',

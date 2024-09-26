@@ -9,6 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'hk-blue': {
+          200: '#2589FE',
+          300: '#0070F3',
+          600: '#232f3e',
+        },
+        "hkred" : "#ed1a2e",
+        'hkcyan' : '#47b5e0',
+        'hkivory' : '#d9e0d4',
+        'hkdarkblue' : '#1d4681',
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

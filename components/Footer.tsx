@@ -13,7 +13,7 @@ export default function Footer() {
                 className={'grow order-2 md:order-1 md:basis-0 flex text-xs md:text-sm flex-col text-neutral-300 md:items-start md:justify-start'}>
                 <div className={'flex gap-x-4'}>
                     <div className={'w-5'}>Adr</div>
-                    <div>{`${locationData[1].streetAddress} ${locationData[1].buildingInfo}`}</div>
+                    <div>{`${locationData[0].streetAddress} ${locationData[0].buildingInfo}`}</div>
                 </div>
                 <div className={'flex gap-x-4'}>
                     <div className={'w-5'}>Tel</div>

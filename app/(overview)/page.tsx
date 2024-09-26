@@ -52,7 +52,7 @@ export default function Home() {
                       <TypingEffect texts={['사람과 기술로 사회발전에 기여합니다.', '토목분야의 문제해결과 기술향상에 집중합니다']}/>
                       <div className={'pt-[2vw]'}></div>
                       <div className={'flex gap-x-3'}>
-                          <Link href={'/'}>
+                          <Link href={'/about-us/greeting'}>
                               <div
                                   className={'text-base h-12 pl-5 pr-2 gap-0 font-semibold bg-white text-black hover:bg-white/90 focus-visible:ring-4 focus-visible:ring-white/30 focus-visible:outline-none focus-visible:bg-white/90 disabled:hover:bg-white inline-flex items-center border justify-center select-none rounded-full disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200'}>
                                   회사소개
@@ -62,7 +62,7 @@ export default function Home() {
                                       strokeLinejoin="round" strokeWidth="1.5"></path></svg></span>
                               </div>
                           </Link>
-                          <Link href={'/s'}>
+                          <Link href={'/location'}>
                               <div
                                   className={'text-base h-12 pl-5 pr-2 gap-0 font-semibold hover:bg-gray-800/90 hover:text-slate-12 inline-flex items-center justify-center select-none rounded-full disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200'}>
                                   오시는길
@@ -91,7 +91,7 @@ export default function Home() {
               </div>
               <div
                   className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
-                  <Link href={'/about-us'}>
+                  <Link href={'/about-us/core_value'}>
                       <FaLink/>
                   </Link>
               </div>
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
               <div
                   className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
-                  <Link href={'/about-us'}>
+                  <Link href={'/rnd/rnds'}>
                       <FaLink/>
                   </Link>
               </div>
@@ -134,15 +134,11 @@ export default function Home() {
                   <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500] pt-[4.4vw] border-t-[1px] border-[#222] w-full text-center'}>PR CENTER</h2>
                   <div className={'flex flex-col items-center'}>
                       <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>홍보센터</h1>
-                      <div className={'mt-[2vw] flex font-[400] gap-x-[1vw]'}>
-                          <div
-                              className={'py-[10px] px-[20px] rounded-md bg-white text-black font-semibold text-[1.2rem]'}>
-                              CI소개
-                          </div>
-                          <div
-                              className={'py-[10px] px-[20px] rounded-md border-white border-[1px] text-white font-semibold text-[1.2rem]'}>
-                              브로슈어
-                          </div>
+                      <div
+                          className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
+                          <Link href={'/pr_center/cis'}>
+                              <FaLink/>
+                          </Link>
                       </div>
                   </div>
               </div>

@@ -55,7 +55,7 @@ export default function BusinessInfoCard ({title,description,businessLinks}:{
                                      className={'text-[.8rem] z-[2] flex justify-center items-center'}>
                                     <div
                                         className={'flex justify-center items-center py-2 w-full shadow-black hover:bg-[#111114]/[.8]'}>
-                                        <Link href={'/'}>
+                                        <Link href={el.link}>
                                             {el.departmentName}
                                         </Link>
                                     </div>

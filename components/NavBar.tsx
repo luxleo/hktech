@@ -8,34 +8,45 @@ import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
 
-type Menu = {
+export type Menu = {
     id: number;
     name: string;
+    eng_name: string;
     link: string;
 };
 
-type RootMenu = Menu & { sub_menu: Menu[]; };
+export type RootMenu = Menu & { sub_menu: Menu[]; };
 
-const menus: RootMenu[] = [
+export const menus: RootMenu[] = [
     {
-        id: 1, name: "회사소개", link: "/about-us/greeting", sub_menu: [
-            {id: 11, name: "인사말", link: "/about-us/greeting"},
-            {id: 12, name: "경영이념", link: "/about-us/greeting"},
-            {id: 13, name: "조직구조", link: "/about-us/greeting"},
-            {id: 14, name: "연혁", link: "/about-us/greeting"},
+        id: 1, name: "회사소개", link: "/about-us/greeting",eng_name: "about-us", sub_menu: [
+            {id: 11, name: "인사말",eng_name: "greeting", link: "/about-us/greeting"},
+            {id: 12, name: "경영이념",eng_name: "core_value", link: "/about-us/core_value"},
+            {id: 13, name: "조직구조",eng_name: "organization", link: "/about-us/organization"},
+            {id: 14, name: "연혁",eng_name: "history", link: "/about-us/history"},
         ]
     },
     {
-        id: 2, name: "사업소개", link: "/businesses/domains", sub_menu: [
-            {id: 21, name: "사업소개", link: "/businesses/domains"},
-            {id: 22, name: "프로젝트", link: "/businesses/projects"},
+        id: 2, name: "사업소개",eng_name: "businesses", link: "/businesses/domains", sub_menu: [
+            {id: 21, name: "사업소개", eng_name: "domains",link: "/businesses/domains"},
+            {id: 22, name: "프로젝트", eng_name: "projects",link: "/businesses/projects"},
         ]
     },
     {
-        id: 3, name: "기술개발", link: "/rnd/licences", sub_menu: [
-            {id: 31, name: "업·면허등록 현황", link: "/rnd/licences"},
-            {id: 32, name: "지적재산권", link: "/rnd/pr_list"},
-            {id: 33, name: "연구개발", link: "/rnd/rnds"},
+        id: 3, name: "기술개발",eng_name: "rnd", link: "/rnd/licences", sub_menu: [
+            {id: 31, name: "업·면허등록 현황",eng_name: "licences", link: "/rnd/licences"},
+            {id: 32, name: "지적재산권",eng_name: "ipr_list", link: "/rnd/ipr_list"},
+            {id: 33, name: "연구개발",eng_name: "rnds", link: "/rnd/rnds"},
+        ]
+    },
+    {
+        id: 4, name: "홍보센터", eng_name: "pr_center",link: "/pr_center/cis", sub_menu: [
+            {id: 31, name: "CI소개",eng_name: "cis", link: "/pr_center/cis"},
+        ]
+    },
+    {
+        id: 5, name: "오시는길",eng_name: "location", link: "/location", sub_menu: [
+            {id: 31, name: "오시는길",eng_name: "location", link: "/location"},
         ]
     },
 ];
@@ -196,13 +207,14 @@ function MenuContainer() {
                 >
                     <Link href={el.link}>
                         <m.div
+                            // initial={{padding: "0 10px"}}
                             animate={navbarContext.isFocused ? 'focused' : "unfocused"}
                             variants={{
                                 "focused": {
                                     padding: "0 30px 1px",
                                 },
-                                "unFocused": {
-                                    padding: "0 15px"
+                                "unfocused": {
+                                    padding: "0 10px 0px"
                                 }
                             }}
                             className={clsx('h-[95px] text-[18px] flex items-center transition ease-in-out duration-400',{
