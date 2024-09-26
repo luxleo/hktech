@@ -45,6 +45,19 @@ export default async function RootLayout({
 따라서 fetch 이후 페이지를 렌더링하여 전송하는 SSR 방식, 컴포넌트 갱신을 위한 fetch를 하는 CSR이 아니라면 사용을 지양해야함.
 [참조](https://react.dev/reference/react/Suspense)
 
+## unexpected any
+eslint 규칙에 따라 any 타입 못쓰게 하는데 이때 전역 설정으로 any를 허용하거나, 주석을 통해 해당 라인만 무시하도록 하는 방법이있다.
+전자의 방법은 추천하지 않는다(타입스크립트를 사용하는 이유가 없음)
+```typescript
+declare global {
+interface Window {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+kakao: any;
+}
+}
+```
+[참조](./app/layout.tsx)
+
 # Skills I Learn
 ## css 애니메이션 처리시 layout 여러개 깔아 주기 
     배경과 컨텐츠를 분리하여 적용하면 굉장히 편하고 좋다.
@@ -92,3 +105,4 @@ next js 에서는 `@next/bundle-analyzer` 를 이용하여 제공한다.
 stat: 전체 소스 코드의 크기 이다. 웹팩에 의하여 전혀 해석되지 않은 상태
 parsed: 웹팩이 해석한 실제 크기 번들 되기 전이다.
 gzipped: 웹팩이 번들하여 최종적으로 브라우져로 전달되는 크기 
+
