@@ -57,6 +57,12 @@ kakao: any;
 }
 ```
 [참조](./app/layout.tsx)
+## window not defined
+next js 에서 빌드할 때 노드 환경에서 빌드한다, 이때 useRef등 클라이언트 단의 코드에 window 변수를 할당하면
+노드 환경에서는 참조할 수 없으므로 발생하는 에러이다.
+useCallback, useEffect등의 확실한 클라이언트단의 코드에서 호출하던가, 아니면 다른 변수를 이용하여 참조해야한다.
+[참조](./components/navbar/mobile_navbar.tsx)
+
 
 # Skills I Learn
 ## css 애니메이션 처리시 layout 여러개 깔아 주기 
