@@ -69,8 +69,7 @@ export default function NavBar() {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const {scrollY} = useScroll();
     const lastYRef = useRef(0);
-    const myWindow = useRef(window);
-
+    const navbarOpacityRef = useRef(0.8);
 
     useMotionValueEvent(scrollY, "change", (y) => {
         const diff = y - lastYRef.current;
@@ -84,7 +83,10 @@ export default function NavBar() {
     });
 
     const changeIsFocused = useCallback((value:boolean)=>{
-        if(myWindow.current.innerWidth < 768) {
+        if(window.innerWidth < 768) {
+            if (navbarOpacityRef.current === 0.8) {
+                navbarOpacityRef.current = 0.95;
+            }
             return;
         };
         setIsFocused(value);
@@ -109,7 +111,7 @@ export default function NavBar() {
                     animate={isScrolled ? "bg-visible" : "bg-transparent"}
                     variants={{
                         "bg-visible": {
-                            opacity: myWindow.current.innerWidth > 768 ? 0.8 : 0.95,
+                            opacity: navbarOpacityRef.current,
                             height: '95px'
                         },
                         "bg-transparent": {
