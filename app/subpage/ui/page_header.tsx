@@ -3,7 +3,7 @@ import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
 import clsx from "clsx";
 import {useEffect, useState} from "react";
-import {menus, RootMenu} from "@/components/NavBar";
+import {menus, RootMenu} from "@/components/navbar/NavBar";
 
 //LEARN: min-h는 h를 부여하지 않아서 자식 요소가 참조할 요소가 없음.
 //TODO: 현재는 search param으로 메뉴이름들을 받아 오는 형식 => 추후 서버에서 받는 형식으로 해야할 거 같다.

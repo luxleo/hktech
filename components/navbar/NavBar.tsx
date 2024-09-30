@@ -7,6 +7,7 @@ import {useMotionValueEvent, useScroll} from "framer-motion";
 import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
+import {PhoneNavBar} from "@/components/navbar/mobile_navbar";
 
 export type Menu = {
     id: number;
@@ -68,6 +69,7 @@ export default function NavBar() {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const {scrollY} = useScroll();
     const lastYRef = useRef(0);
+    const myWindow = useRef(window);
 
 
     useMotionValueEvent(scrollY, "change", (y) => {
@@ -82,6 +84,9 @@ export default function NavBar() {
     });
 
     const changeIsFocused = useCallback((value:boolean)=>{
+        if(myWindow.current.innerWidth < 768) {
+            return;
+        };
         setIsFocused(value);
         }
         ,[])
@@ -104,7 +109,7 @@ export default function NavBar() {
                     animate={isScrolled ? "bg-visible" : "bg-transparent"}
                     variants={{
                         "bg-visible": {
-                            opacity: 0.8,
+                            opacity: myWindow.current.innerWidth > 768 ? 0.8 : 0.95,
                             height: '95px'
                         },
                         "bg-transparent": {
@@ -112,7 +117,6 @@ export default function NavBar() {
                         }
                     }}
                 >
-
                 </m.div>
                 <m.nav
                     className={'w-full fixed top-0 left-0 z-50'}
@@ -133,7 +137,7 @@ export default function NavBar() {
                         <div
                             className={'fixed top-[18px] left-[3%] w-[200px] h-[66px] z-50 hover:cursor-pointer'}
                         >
-                            <div className={clsx('absolute top-0 left-0 w-[200px] h-[66px]', {
+                            <div className={clsx('absolute top-0 left-0 w-[150px] xl:w-[200px] h-[66px]', {
                                 'block': isScrolled || isFocused,
                                 'hidden': !(isScrolled || isFocused)
                             })}>
@@ -144,13 +148,13 @@ export default function NavBar() {
                                         alt={'logo'}
                                         sizes={'200px'}
                                         style={{
-                                            objectFit: "cover"
+                                            objectFit: "contain"
                                         }}
                                         priority={true}
                                     />
                                 </Link>
                             </div>
-                            <div className={clsx('absolute top-0 left-0 w-[200px] h-[66px]', {
+                            <div className={clsx('absolute top-0 left-0 w-[150px] xl:w-[200px] h-[66px]', {
                                 'hidden': isScrolled || isFocused,
                                 'block': !(isScrolled || isFocused)
                             })}>
@@ -161,7 +165,7 @@ export default function NavBar() {
                                         alt={'logo'}
                                         sizes={'200px'}
                                         style={{
-                                            objectFit: "cover"
+                                            objectFit: "contain"
                                         }}
                                         priority={true}
                                     />
@@ -181,14 +185,16 @@ export default function NavBar() {
                         }}
                     >
                     </m.div>
-                    <MenuContainer/>
+                    <MenuLargeContainer/>
+                    <PhoneNavBar responsiveStlye={isScrolled? 'scroll-downed' : 'default'}/>
                 </m.nav>
             </div>
         </NavBarContext.Provider>
     );
 };
 
-function MenuContainer() {
+
+function MenuLargeContainer() {
     const navbarContext = useContext(NavBarContext);
     const [currentMenu, setCurrentMenu] = useState<string>("");
 
@@ -196,7 +202,7 @@ function MenuContainer() {
         setCurrentMenu(value);
     },[])
     return (
-        <ul className={'flex justify-center z-40 relative'}>
+        <ul className={'hidden md:flex justify-center z-40 relative'}>
             {navbarContext.isFocused && <div className={'absolute top-[95px] h-[1px] w-full bg-slate-300'}>
             </div>}
             {menus.map((el) => (

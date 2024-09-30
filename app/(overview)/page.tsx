@@ -1,4 +1,4 @@
-import styles from './landing.module.css';
+import styles from './landing.module.scss';
 import IndexBgImageRenderer from "@/app/(overview)/IndexBgImageRenderer";
 import {FaLink} from "react-icons/fa";
 import Link from "next/link";
@@ -41,10 +41,10 @@ export default function Home() {
           {/*1page*/}
           <div
               className={`w-full ${indexBackgroundColor} h-[100vh] md:px-[40px] flex justify-center items-center`}>
-              <div className={'w-full md:w-[60vw] grid grid-cols-1 md:grid-cols-2 gap-x-3'}>
+              <div className={'w-full md:w-[80vw] lg:w-[70vw] max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-x-1'}>
                   <div
-                      className={'w-full h-full lg:h-[600px]  flex flex-col justify-center items-start md:order-first order-last'}>
-                      <div className={'w-full lg:text-[4.5rem] font-extrabold leading-none'}>
+                      className={'w-full h-full lg:h-[600px] flex flex-col justify-center items-start md:order-first order-last'}>
+                      <div className={'w-full lg:text-[5.3rem] font-extrabold leading-none'}>
                           <span className={`${styles.colorChange}`}>H</span>uman <span
                           className={`${styles.colorChange}`}>K</span>orea Technology
                       </div>
@@ -75,7 +75,7 @@ export default function Home() {
                       </div>
                   </div>
                   <div
-                      className={`${styles.animate_webgl_preload} hidden lg:block w-full grayscale`}>
+                      className={`${styles.animate_webgl_preload} ${styles.renderingContainer} hidden md:block w-full grayscale`}>
                       <Spline scene="/cube.splinecode"/>
                   </div>
               </div>

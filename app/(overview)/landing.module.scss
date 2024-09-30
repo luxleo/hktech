@@ -8,6 +8,20 @@
     animation: canvasLoading 1s ease-in-out;
 }
 
+.renderingContainer {
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    canvas {
+        width: 100% !important;
+        max-width: 600px;
+        aspect-ratio: 1 !important;
+        max-height: 600px;
+    }
+}
+
 @keyframes toRed {
     from {
         color: inherit;
