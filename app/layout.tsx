@@ -5,7 +5,6 @@ import {notoSansKr} from "@/app/fonts/NotoSansKr";
 import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/Footer";
 import {domAnimation, LazyMotion} from "framer-motion";
-import {PhoneNavBar} from "@/components/navbar/mobile_navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
