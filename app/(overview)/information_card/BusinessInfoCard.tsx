@@ -39,7 +39,7 @@ export default function BusinessInfoCard ({title,description,businessLinks}:{
                     >
                         <div className={'w-full mt-[.5vw] flex justify-center hover:bg-emerald-500'}>
                         </div>
-                        <m.div className={'w-full grid grid-cols-2 mt-[1vw]'}
+                        <m.div className={'w-full grid grid-cols-2 mt-[20px] md:mt-[1vw]'}
                                animate={isFocused ? "focused" : 'not_focused'}
                                variants={{
                                    'not_focused': {
