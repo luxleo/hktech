@@ -83,6 +83,7 @@ export default function NavBar() {
     });
 
     const changeIsFocused = useCallback((value:boolean)=>{
+        //INFO: window의 경우 useCallback, useEffect등의 확실한 브라우져 단의 코드가 아니면 node(서버)단에서 빌드하므로 참조 에러 발생한다.
         if(window.innerWidth < 768) {
             if (navbarOpacityRef.current === 0.8) {
                 navbarOpacityRef.current = 0.95;

@@ -44,7 +44,7 @@ export default function TypingEffect({ texts }: TypingEffectProps) {
     }, [texts, textIndex, charIndex, isDeleting]);
 
     return (
-        <div className={'h-[2rem] text-slate-300 text-[1.5rem] flex items-center'}>
+        <div className={'h-[2rem] text-slate-300 text-[1.1rem] md:text-[1.5rem] flex items-center'}>
             {displayText} <div className={`${styles.anim_typewriter} w-[2px] h-[1.5rem] bg-gray-400`}></div>
         </div>
     );

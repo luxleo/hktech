@@ -40,11 +40,11 @@ export default function Home() {
           <IndexBgImageRenderer/>
           {/*1page*/}
           <div
-              className={`w-full ${indexBackgroundColor} h-[100vh] md:px-[40px] flex justify-center items-center`}>
+              className={`w-full ${indexBackgroundColor} h-[100vh] px-[20px] md:px-[40px] flex justify-center items-center`}>
               <div className={'w-full md:w-[80vw] lg:w-[70vw] max-w-[1250px] grid grid-cols-1 md:grid-cols-2 gap-x-1'}>
                   <div
                       className={'w-full h-full lg:h-[600px] flex flex-col justify-center items-start md:order-first order-last'}>
-                      <div className={'w-full lg:text-[5.3rem] font-extrabold leading-none'}>
+                      <div className={'w-full text-[1.8rem] lg:text-[5.3rem] font-extrabold leading-none'}>
                           <span className={`${styles.colorChange}`}>H</span>uman <span
                           className={`${styles.colorChange}`}>K</span>orea Technology
                       </div>
@@ -85,12 +85,12 @@ export default function Home() {
     <div className={'w-full h-[120vw] md:h-[40vw] bg-none flex justify-center items-center flex-col'}>
               <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500]'}>ABOUT US</h2>
               <div className={'flex flex-col items-center'}>
-                  <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>사람과 기술로 사회발전에 기여합니다.</h1>
-                  <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>2012년 창립 이래 우수한 기술력과 진취적인 사고로 <br/>우리나라
+                  <h1 className={'mt-[3vw] text-[1.5rem] md:text-[calc(1.7rem+1vw)] font-[600]'}>사람과 기술로 사회발전에 기여합니다.</h1>
+                  <p className={'mt-[1rem] md:mt-[1vw] text-[1rem] md:text-[calc(1rem+0.3vw)] font-[400]'}>2012년 창립 이래 우수한 기술력과 진취적인 사고로 <br/>우리나라
                       건설기술의 선진화를 함께 이루어갑니다.</p>
               </div>
               <div
-                  className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
+                  className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[1.5rem] md:text-[calc(12px+0.6vw)] text-green-700'}>
                   <Link href={'/about-us/core_value'}>
                       <FaLink/>
                   </Link>
@@ -101,11 +101,11 @@ export default function Home() {
               <div className={'w-[calc(100%-5.6vw)] max-w-[1400px] flex mx-auto flex-col justify-center items-center'}>
                   <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500] pt-[4.4vw] border-t-[1px] border-[#222] w-full text-center'}>FOCUS</h2>
                   <div className={'flex flex-col items-center'}>
-                      <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>토목분야의 문제해결과 기술향상에 집중합니다</h1>
-                      <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>최상의 기술과 다양한 경험으로 건설엔지니어링의 모든 영역의 문제를
+                      <h1 className={'mt-[3vw] text-[1.5rem] md:text-[calc(1.7rem+1vw)] font-[600]'}>토목분야의 문제해결과 기술향상에 집중합니다</h1>
+                      <p className={'mt-[1rem] md:mt-[1vw] text-[1rem] md:text-[calc(1rem+0.3vw)] font-[400]'}>최상의 기술과 다양한 경험으로 건설엔지니어링의 모든 영역의 문제를
                           해결합니다</p>
                   </div>
-                  <div className={'md:mt-[60px] w-full grid md:grid-cols-4 gap-x-[1.4vw]'}>
+                  <div className={'mt-[30px] md:mt-[60px] w-full grid md:grid-cols-4 gap-x-[1.4vw] gap-y-[2rem]'}>
                       {departmentLinks.map(el => (
                           <BusinessInfoCard key={`field_name_${el.fieldName}`} title={el.fieldName}
                                             description={el.description}
@@ -118,11 +118,11 @@ export default function Home() {
           <div className={'w-full h-[120vw] md:h-[40vw] bg-none flex justify-center items-center flex-col'}>
               <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500]'}>INNOVATE</h2>
               <div className={'flex flex-col items-center'}>
-                  <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>지속가능한 성장을 위해 혁신을 추구합니다</h1>
-                  <p className={'mt-[1vw] text-[calc(1rem+0.3vw)] font-[400]'}>효율성 생산성을 증대시킬 엔지니어링 기술을 연구합니다.</p>
+                  <h1 className={'mt-[3vw] text-[1.5rem] md:text-[calc(1.7rem+1vw)] font-[600]'}>지속가능한 성장을 위해 혁신을 추구합니다</h1>
+                  <p className={'mt-[1rem] md:mt-[1vw] text-[1rem] md:text-[calc(1rem+0.3vw)] font-[400]'}>효율성 생산성을 증대시킬 엔지니어링 기술을 연구합니다.</p>
               </div>
               <div
-                  className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
+                  className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[1.5rem] md:text-[calc(12px+0.6vw)] text-green-700'}>
                   <Link href={'/rnd/rnds'}>
                       <FaLink/>
                   </Link>
@@ -133,9 +133,9 @@ export default function Home() {
               <div className={'w-[calc(100%-5.6vw)] max-w-[1400px] flex mx-auto flex-col justify-center items-center'}>
                   <h2 className={'text-[calc(0.82rem+0.2vw)] font-[500] pt-[4.4vw] border-t-[1px] border-[#222] w-full text-center'}>PR CENTER</h2>
                   <div className={'flex flex-col items-center'}>
-                      <h1 className={'mt-[3vw] text-[calc(1.7rem+1vw)] font-[600]'}>홍보센터</h1>
+                      <h1 className={'mt-[3vw] text-[1.5rem] md:text-[calc(1.7rem+1vw)] font-[600]'}>홍보센터</h1>
                       <div
-                          className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[calc(12px+0.6vw)] text-green-700'}>
+                          className={'rounded-full bg-white p-[calc(10px+0.4vw)] bg-opacity-75 mt-[calc(20px+0.3vw)] hover:bg-opacity-90 hover:cursor-pointer text-[1.5rem] md:text-[calc(12px+0.6vw)] text-green-700'}>
                           <Link href={'/pr_center/cis'}>
                               <FaLink/>
                           </Link>
